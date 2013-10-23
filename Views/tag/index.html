@@ -1,0 +1,22 @@
+<div ng-controller="tag.TagController">
+    <div id="ti_container" ng-init="initTag()">
+        <div id="ti_spacer">
+        	<p class="ti_text ti_center wrapText">{{message}} </p>
+        </div>
+        <div id="ti_search_container">
+            <input type="text" name="search_bar" id="ti_search_bar" value="" placeholder="#Margaritas" ng-model="text"/>
+            <input type="button" name="tag" id="ti_tag_button" value="" ng-click="addTag(text)"/>  
+        </div>
+        
+        <div id="ti_edit_container">
+            <input type="button" name="done" id="ti_done_button" class="ti_right" value="" ng-click="postTags(newTags)"/>  
+        </div>
+        
+      
+        <div class="ti_tag_container" >
+        	<p class="ti_text" style="margin-top:3%;">added: </p>
+        	<span ng-repeat='tag in newTags' class="ti_text ti_tag_entry wrapText">{{tag}}</span>
+        </div>
+     
+    </div> 
+</div>

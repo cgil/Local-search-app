@@ -1,0 +1,48 @@
+<div ng-controller="layouts.StandardController">
+
+	<!-- BEGIN: Layout Container. -->
+	<div id="container">
+        <div id="top_bar">
+            <div class="back_button_container">
+            	<input type="button" name="back" id="back_button" value=""/>
+           	</div> 
+            <div class="v_logo_container">
+            	<a href="#/home">
+            		<input type="button" name="logo" id="v_logo" value="" ng-class="{ on: ( subview == 'home' ) }"/>
+            	</a>
+            </div>
+            <div class="hash_button_container">
+            	<a href="#/nearby">
+            		<input type="button" name="hash" id="hash_button" value="" ng-class="{ on: ( subview == 'nearby' ) }"/>
+            	</a> 
+            </div> 
+        </div>
+        
+        <div ng-switch="subview">
+   			<div ng-switch-when="serp" ng-include=" '/Views/serp/index.html' "></div>
+            <div ng-switch-when="feed" ng-include=" '/Views/feed/index.html' "></div>
+            <div ng-switch-when="home" ng-include=" '/Views/home/index.html' "></div>
+            <div ng-switch-when="tag" ng-include=" '/Views/tag/index.html' "></div>
+            <div ng-switch-when="nearby" ng-include=" '/Views/nearby/index.html' "></div>
+            <div ng-switch-when="location" ng-include=" '/Views/location/index.html' "></div>
+            <div ng-switch-when="login" ng-include=" '/Views/login/index.html' "></div>
+            <div ng-switch-when="loggedIn" ng-include=" '/Views/login/loggedIn.html' "></div>
+            <div ng-switch-when="loginFailed" ng-include=" '/Views/login/loginFailed.html' "></div>
+         
+        </div>  
+        <div id="footer_container" ng-switch="subview">
+        	<div class="powered_by_google" ng-switch-when="serp">
+        		<img src="/Images/powered-by-google/desktop/powered-by-google-on-white.png" alt="Powered by Google"/>
+            </div>
+            
+            <div ng-switch-when="serp" ng-include=" '/Views/login/fb_button_footer.html' "></div>
+            <div ng-switch-when="feed" ng-include=" '/Views/login/fb_button_footer.html' "></div>
+            <div ng-switch-when="home" ng-include=" '/Views/login/fb_button_footer.html' "></div>
+            <div ng-switch-when="tag" ng-include=" '/Views/login/fb_button_footer.html' "></div>
+            <div ng-switch-when="nearby" ng-include=" '/Views/login/fb_button_footer.html' "></div>
+            <div ng-switch-when="location" ng-include=" '/Views/login/fb_button_footer.html' "></div>
+            
+    	</div>
+
+	</div>
+</div>

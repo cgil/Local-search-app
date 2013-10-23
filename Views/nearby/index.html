@@ -1,0 +1,27 @@
+<div ng-controller="nearby.NearbyController">
+    <div id="tn_container">
+        
+        <div id="tn_spacer" ng-init="initNearby()">
+        	<p class="ti_text ti_center wrapText"> {{errorMessage}} </p>
+        </div>
+        
+        <div class="tn_tag_container">
+            <div class="infinite_scroller" infinite-scroll='' infinite-scroll-distance='0'>
+                <div class="tn_tag_entry" ng-repeat='waypoint in waypoints'>
+                	<div class="tn_listing" ng-click="doLocation(waypoint)">
+                        <span class="tn_waypoint_text">{{waypoint.waypoint}}</span>
+                        <span class="tn_rating_text">{{waypoint.rating}}</span>
+                        <div class="tn_info_text" >
+                            <span> {{waypoint.location}}</span> 
+                            <!-- No longer getting this data from Google places, reintroduce once we own it
+                            <span>  {{waypoint.distance}}</span>
+                            <span class="clear"> {{waypoint.hours}}</span>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
+     
+    </div>
+</div>

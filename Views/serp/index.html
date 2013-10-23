@@ -1,0 +1,35 @@
+<div ng-controller="serp.SerpController" ng-init="initSerp()">
+    <div id="serp_search_container">
+        <input type="text" name="search_bar" id="serp_search_bar" value="" placeholder="#Margaritas" ng-model="search"/>
+        <input type="button" name="go" id="serp_go_button" value="" ng-click="doSearch(search)"/>  
+    </div>
+  
+    <div id="serp_hash_container">
+        <div class="infinite_scroller" infinite-scroll='' infinite-scroll-distance='0'>
+            <div class="review_entry" ng-repeat='waypoint in serpWaypoints'>
+                <div class="review_listing">
+                    <div class="info_container" ng-click="doLocation(waypoint)">
+                        <div class="review_waypoint_text wrapText">
+                            <span class="vertAlign">{{waypoint.waypoint | truncate:80}}</span>
+                        </div>
+                        <div class="review_rating_text">
+                            <span>{{waypoint.rating}}</span>
+                        </div>
+                        <div class="review_info_text wrapText">                          
+                            <span> {{waypoint.location | truncate:95}}</span> 
+                            <span>  {{waypoint.distance}}</span>
+                        	<span class="clear"> {{waypoint.hours | truncate:40}}</span>                         
+                        </div>
+                    </div>
+                    <div class="tri_button_container">
+                   		<input type="button" name="location" class="location_button" value=""/>
+                        <a href="tel:{{waypoint.number | deformat}}">
+                    		<input type="button" name="call" class="call_button" value=""/>
+                        </a>
+                    	<input type="button" name="tag" class="tag_button" value="" ng-click="doTag(waypoint)" ng-class="{ on: ( subview == 'tag' ) }"/>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

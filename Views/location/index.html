@@ -1,0 +1,46 @@
+<div ng-controller="location.LocationController" ng-init="initLocation()">
+    <div id="location_entry">
+        <div class="location_listing">
+        	<div class="info_container top_spacer">
+			        <div class="l_waypoint_text wrapText">
+                    	<span class="vertAlign">{{waypoint.waypoint | truncate:80}}</span>
+                    </div>
+                    <div class="review_rating_text">
+                    	<span>{{waypoint.rating}}</span>
+                    </div>
+                    <div class="l_data_text wrapText">               
+                        <span> {{waypoint.location | truncate:95}}</span> 
+                        <span>  {{waypoint.distance}}</span>
+                        <span class="clear"> {{waypoint.hours | truncate:40}}</span>
+                    </div>
+            </div>
+            <div class="tri_button_container top_spacer">
+            	<a href="geo:{{waypoint.lat_lng.lat}},{{waypoint.lat_lng.lng}}?z=15">
+               		<input type="button" name="location" class="l_location_button" value=""/>
+                </a>
+                <a href="tel:{{waypoint.number | deformat}}">
+                	<input type="button" name="call" class="l_call_button" value=""/>
+                </a>
+                <input type="button" name="tag" class="l_tag_button" value="" ng-click="doTag(waypoint)" ng-class="{ on: ( subview == 'tag' ) }"/>
+            </div>
+            
+        </div>
+    </div>
+    <div id="l_spacer">
+    </div>
+    <div id="l_location_container">
+        <div class="infinite_scroller" infinite-scroll='' infinite-scroll-distance='0'>
+            <div class="l_location_entry" ng-repeat='tag in tags'>  
+            	<div class="l_listing">
+                    <div class="l_info_text wrapText" ng-click="doSerp(tag.tag)">
+                        <span class="vertAlign"> {{tag.tag | truncate: 95 }}</span>
+                    </div>  
+                    <div class="l_pop_container">      
+                        <input type="button" name="plus" class="plus_button" value="" ng-click="vote(tag, 'p')"/>
+                        <input type="button" name="minus" class="minus_button" value="" ng-click="vote(tag, 'n')"/>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
